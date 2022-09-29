@@ -1,5 +1,6 @@
-import './Navbar.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import './Navbar.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CardWidget from '../CartWidget/CarWidget';
 
 const Navbar = () => {
     return (
@@ -18,6 +19,8 @@ const Navbar = () => {
     <a class="nav-link disabled">Disabled</a>
   </li>
 </ul>
+
+<CardWidget/>
         </nav>
     )
 }
