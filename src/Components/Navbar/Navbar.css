@@ -6,7 +6,10 @@
     height: 60px;
     background:rgb(168, 164, 158) ;
   }
-  
+  .logo {
+    height: 50px;
+    width: 150px;
+}
   .Categories {
     display: flex;
     justify-content: space-around;
@@ -65,6 +68,3 @@
     outline: inherit;
   }
   
-  .NavLink {
-    color :rgb(255, 0, 0)
-  }

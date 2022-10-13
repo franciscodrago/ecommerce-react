@@ -1,12 +1,13 @@
 import CartWidget from '../CartWidget/CartWidget'
 import './Navbar.css'
+import logo from './assets/logo.svg'
 import { NavLink } from 'react-router-dom'
 
 const NavBar = () => {
   return (
     <nav className="NavBar" >
       <NavLink to='/'>
-          <h3>Ecommerce</h3>
+          <img className='logo' src={logo}></img>
       </NavLink>
 
         <div className="Categories">
