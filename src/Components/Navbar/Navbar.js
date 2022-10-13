@@ -1,30 +1,23 @@
-import './Navbar.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import CardWidget from '../CartWidget/CarWidget';
-import logo from './assets/logo.svg'
+import CartWidget from '../CartWidget/CartWidget'
+import './Navbar.css'
+import { NavLink } from 'react-router-dom'
 
-const Navbar = () => {
-    return (
-        <nav>
-<ul class="nav">
-  <img class="logo" src={logo}/>
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Tienda</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Nosotros</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href='#'>Contacto</a>
-  </li>
-</ul>
+const NavBar = () => {
+  return (
+    <nav className="NavBar" >
+      <NavLink to='/'>
+          <h3>Ecommerce</h3>
+      </NavLink>
 
-<CardWidget/>
-        </nav>
-    )
+        <div className="Categories">
+            <NavLink to={'/category/Buzos'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>Buzos</NavLink>
+            <NavLink to={'/category/Jeans'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>Jeans</NavLink>
+            <NavLink to={'/category/Joggers'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>Joggers</NavLink>
+            <NavLink to={'/category/Camperas'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>Camperas</NavLink>
+        </div>
+        < CartWidget />
+    </nav>
+  )
 }
 
-export default Navbar
+export default NavBar
