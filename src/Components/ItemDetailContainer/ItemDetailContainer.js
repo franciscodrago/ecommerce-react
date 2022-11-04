@@ -1,8 +1,9 @@
 import './ItemDetailContainer.css'
 import { useState, useEffect } from 'react'
-import { getProductById } from '../../asyncMock'
 import ItemDetail from '../ItemDetail/ItemDetail'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
+import { getDocs, collection, getDoc, doc } from 'firebase/firestore' 
+import { db } from '../../services/firebase'
 
 
 const ItemDetailContainer = () => {
@@ -12,12 +13,26 @@ const ItemDetailContainer = () => {
     const { productId } = useParams()
     console.log(productId)
 
+const navigate= useNavigate()
+
     useEffect(() => {
-        getProductById(productId).then(response => {
-            setProduct(response)
+
+        const docRef= doc(db, 'products', productId)
+
+
+        getDoc(docRef).then(response =>{
+            console.log(response)
+            const data= response.data()
+            const productsAdapted = { id: response.id, ...data}
+            setProduct(productsAdapted)
         }).finally(() => {
             setLoading(false)
         })
+        // getProductById(productId).then(response => {
+        //     setProduct(response)
+        // }).finally(() => {
+        //     setLoading(false)
+        // })
     }, [productId])
 
     if(loading) {
@@ -26,6 +41,7 @@ const ItemDetailContainer = () => {
 
     return(
         <div className='ItemDetailContainer' >
+            <button className='Option' onClick={() => navigate(-1)} >Listado de Productos</button>
             <ItemDetail  {...product} />
         </div>
     )

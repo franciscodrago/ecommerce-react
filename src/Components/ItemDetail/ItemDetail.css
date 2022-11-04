@@ -47,9 +47,9 @@
     outline: inherit;
 }
 
-.ItemImg {
-    width: 100px;
-    height: 100px;
+.Img {
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     object-position: center;
 }

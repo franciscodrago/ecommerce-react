@@ -25,7 +25,7 @@
     width: auto;
     padding: 12px;
     font-size: 8px;
-    background: #2c2930;
+    background:rgb(168, 164, 158);
     border-radius: 8px;
     flex: none;
     display: flex;
@@ -51,7 +51,7 @@
     width: auto;
     padding: 12px;
     font-size: 15px;
-    background: rgb(98, 11, 170);
+    background: #2c2930;
     border-radius: 8px;
     flex: none;
     display: flex;

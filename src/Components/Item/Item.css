@@ -48,7 +48,16 @@
     object-position: center;
 }
 
-.ItemFooter {
-    display: flex;
-    justify-content: center;
+.ItemFooter{
+    border: none;
+    border: 3px dashed;
+    padding: 3% 5%;
+    border-radius: 10px;
+  
+}
+
+.detalle{
+  
+    font-size: 1.5vw;
+    text-decoration: none
 }

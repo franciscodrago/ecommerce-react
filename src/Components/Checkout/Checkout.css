@@ -1,0 +1,33 @@
+.titulo{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+
+
+.Boton{
+    text-decoration: none;
+ 
+    width: auto;
+    padding: 12px;
+    font-size: 15px;
+    background: #2c2930;
+    border-radius: 8px;
+    flex: none;
+    order: 1;
+    align-self: center;
+    flex-grow: 0;
+    text-decoration: none;
+    color: #FFFFFF;
+    border: none;
+    border-style: none;
+    
+}

@@ -1,17 +1,18 @@
-import cart from  './assets/cart.svg';
-import './CartWidget.css';
-import React, { useState } from "react";
-
+import './CartWidget.css'
+import cart from './assets/cart.svg'
+import { useContext } from 'react';
+import { CartContext } from '../../Context/CartContext';
+import { Link } from 'react-router-dom'
 
 const CartWidget = () => {
-    const [contador, setContador] = useState(0);
-    return (
-        <div  className='CartWidget' id="Carrito" >
-           <img className='CartImg' src={cart} alt='cart'
-           onClick={() => setContador(contador + 1)} />
-            <span>{contador}</span>
-        </div>
-    )
+    const { totalQuantity} = useContext(CartContext) 
+
+    return(
+        <Link to='/cart' className="CartWidget">
+            <img src={cart} alt='cart-widget' className='CartImg'/>
+            {totalQuantity}
+        </Link>
+    );
 }
 
-export default CartWidget 
+export default CartWidget

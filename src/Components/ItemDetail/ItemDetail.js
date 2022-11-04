@@ -1,13 +1,28 @@
-import './ItemDetail.css'
-import ItemCount from '../ItemCount/ItemCount'
+import './ItemDetail.css';
+import ItemCount from '../ItemCount/ItemCount';
+import { useContext } from 'react';
+import { CartContext } from '../../Context/CartContext';
+import { Link } from 'react-router-dom';
+
 
 const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
+   
+    const { addItem, isInCart } = useContext(CartContext)
+ 
+   
+
     const handleOnAdd = (quantity) => {
         const productToAdd = {
-            id, name, price, quantity
+           id,
+           name,
+           price
         }
-        console.log(productToAdd)
+
+        addItem(productToAdd, quantity)
+     
+       
     }
+ 
 
     return (
         <article className="CardItem">
@@ -17,7 +32,7 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
                 </h2>
             </header>
             <picture>
-                <img src={img} alt={name} className="ItemImg"/>
+                <img src={img} alt={name} className="Img"/>
             </picture>
             <section>
                 <p className="Info">
@@ -31,11 +46,15 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
                 </p>
             </section>           
             <footer className='ItemFooter'>
-                <ItemCount onAdd={handleOnAdd} stock={stock} />
+                {
+                    !isInCart(id) 
+                        ? <ItemCount onAdd={handleOnAdd} stock={stock} />
+                        : <Link to='/cart' className='Option'>Finalizar compra</Link>
+                }
+                
             </footer>
         </article>
     )
 }
 
 export default ItemDetail
-
