@@ -8,7 +8,7 @@ This website is powered by React, HTML5, CSS and Firebase
 
 Install the dependencies and devDependencies and start the server. ---Follow the instructions---
 
-1) git clone https://github.com/franciscodrago/ecommerce-react.git
+1)git clone https://github.com/franciscodrago/ecommerce-react.git
 
 2)cd appecommerce
 
