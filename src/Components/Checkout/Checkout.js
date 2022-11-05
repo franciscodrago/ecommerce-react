@@ -91,7 +91,6 @@ const Checkout = () => {
         if(loading) {
             return <div className="contenedor">
                 <h1>Se esta procesando su pedido...</h1>
-                <br></br>
                 
             </div>
         

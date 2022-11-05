@@ -1,39 +1,23 @@
 import './ItemDetailContainer.css'
-import { useState, useEffect } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
-import { useParams, useNavigate } from 'react-router-dom'
-import { getDocs, collection, getDoc, doc } from 'firebase/firestore' 
-import { db } from '../../services/firebase'
-
+import { useParams } from 'react-router-dom'
+import { useAsync } from '../../hooks/useAsync'
+import { getProducts } from '../../services/firebase/firestore/products'
 
 const ItemDetailContainer = () => {
-    const [product, setProduct] = useState()
-    const [loading, setLoading] = useState(true)
+    const {productId} = useParams()
+    
+    const getProductsFromFirestore = () => getProducts(productId)
 
-    const { productId } = useParams()
-    console.log(productId)
-
-const navigate= useNavigate()
-
-    useEffect(() => {
-
-        const docRef= doc(db, 'products', productId)
+    const { data: product, error, loading } = useAsync(getProductsFromFirestore, [productId])
 
 
-        getDoc(docRef).then(response =>{
-            console.log(response)
-            const data= response.data()
-            const productsAdapted = { id: response.id, ...data}
-            setProduct(productsAdapted)
-        }).finally(() => {
-            setLoading(false)
-        })
-        // getProductById(productId).then(response => {
-        //     setProduct(response)
-        // }).finally(() => {
-        //     setLoading(false)
-        // })
-    }, [productId])
+
+
+if(error) {
+return  <h1>Oops! Ha habido un error</h1>
+}
+
 
     if(loading) {
         return <h1>Cargando...</h1>
@@ -41,7 +25,7 @@ const navigate= useNavigate()
 
     return(
         <div className='ItemDetailContainer' >
-            <button className='Option' onClick={() => navigate(-1)} >Listado de Productos</button>
+
             <ItemDetail  {...product} />
         </div>
     )
