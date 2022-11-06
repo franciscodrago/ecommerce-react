@@ -21,4 +21,8 @@ Install the dependencies and devDependencies and start the server. ---Follow the
 
 https://ecommerce-react-4pfsg04oa-franciscodrago.vercel.app/
 
+##Google Drive
+
+https://drive.google.com/file/d/12syfiZnOpn675gjBb72ZG5gvKXeH0Bk6/view?usp=sharing
+
 Developed by Francisco Drago.
