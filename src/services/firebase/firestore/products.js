@@ -1,5 +1,6 @@
-import { db } from '..'
-import { getDocs,  collection, query, where} from 'firebase/firestore'
+  import { db } from '..'
+import { getDoc, doc } from 'firebase/firestore'
+import { getDocs,  collection, query, where,} from 'firebase/firestore'
 import { createAdaptedProductFromFirestore } from '../../../adapter/productAdapter'
 
 
@@ -24,4 +25,23 @@ return new Promise((resolve, reject) => {
     }) 
 }
 
-      
+export const getProduct = (productId) => {
+    return new Promise ((resolve,reject) =>{
+        const docRef = doc(db, 'products', productId)
+
+        getDoc(docRef)
+        .then(response => {
+
+            const data = response.data()
+            const productAdapted = { id: response.id, ...data }
+            resolve(productAdapted)
+        })
+
+            .catch(error => {
+                reject(error)
+            })
+
+    })
+}
+
+
