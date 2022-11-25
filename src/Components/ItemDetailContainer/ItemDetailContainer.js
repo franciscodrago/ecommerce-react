@@ -2,12 +2,12 @@ import './ItemDetailContainer.css'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom'
 import { useAsync } from '../../hooks/useAsync'
-import { getProducts } from '../../services/firebase/firestore/products'
+import { getProduct } from '../../services/firebase/firestore/products'
 
 const ItemDetailContainer = () => {
     const {productId} = useParams()
     
-    const getProductsFromFirestore = () => getProducts(productId)
+    const getProductsFromFirestore = () => getProduct(productId)
 
     const { data: product, error, loading } = useAsync(getProductsFromFirestore, [productId])
 
